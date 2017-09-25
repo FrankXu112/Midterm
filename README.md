@@ -8,7 +8,6 @@
 
 ### Table Columns
 
-- [ ] users: id
 - [ ] users: username
 - [ ] users: password
 - [ ] users: email

@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+.clearfix::before,
+.clearfix::after {
+    content: " ";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+.container {
+    margin: 0 auto;
+    width: 1200px;
+}
+.header {
+    border: 1px solid #f00;
+}
+.navbar {
+    margin: 0;
+    padding: 0;
+}
+.navbar li {
+    float: left;
+}
+.navbar a {
+    border: 1px solid #333;
+    padding: 10px;
+}
+.content {
+}
+.footer {
+    margin-top: 20px;
+}
+.credits {
+    text-align: center;
+    font-size: 11px;
+}
+#signup {
+    width: 700px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background: #eee;
+}
+#signup label {
+    display: block;
+}
+#signup label > span {
+    width: 150px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#signup .form-control {
+    width: 545px;
+    padding: 10px;
+    font-size: 14px;
+}
