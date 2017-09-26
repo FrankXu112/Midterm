@@ -1,56 +1,55 @@
 <html>
-<!-- Yorman -->
-<head>
-	<meta charset="UTF-8">
-	<title>Home</title>
-	<link rel="stylesheet" href="midterm.css">
-</head>
+	<!-- Yorman -->
+	<head>
+		<meta charset="UTF-8">
+		<title>Home</title>
+		<link rel="stylesheet" href="midterm.css">
+	</head>
 <body>
 
-<div class="container">
-	<div class="header">
-		<div class="navbar clearfix">
+<header>
+	<div class="container">
+		<nav>
 			<ul>
 				<li><a href="index.html">Index</a></li>
 				<li><a href="profile.html">Profile</a></li>
 				<li><a href="userlist.html">User List</a></li>
-				<li>
-					<a href="signin.html">Signin</a>
-					&nbsp;/&nbsp;
-					<a href="signup.html">Signup</a>
-				</li>
+				<li><a href="signin.html">Signin</a></li>
+				<li><a href="signup.html">Signup</a></li>
 			</ul>
-		</div>
+		</nav>
 	</div>
+</header>
 
-	<div class="content">
-		<form id="signup">
-			<label>
+<main>
+	<div class="container">
+		<form method="post" id="signup">
+			<label class="clearfix">
 				<span>Username:</span>
-				<input type="text" name="username" class="form-control" />
+				<input type="text" name="username" placeholder="e.g. admin" class="form-control" />
 			</label>
 
-			<label>
+			<label class="clearfix">
 				<span>Password:</span>
-				<input type="password" name="password" class="form-control" />
+				<input type="password" name="password" placeholder="e.g. password" class="form-control" />
 			</label>
 
-			<label>
+			<label class="clearfix">
 				<span>Email:</span>
-				<input type="email" name="email" class="form-control" />
+				<input type="email" name="email" placeholder="e.g. noreply@example.com" class="form-control" />
 			</label>
 
-			<label>
+			<label class="clearfix">
 				<span>Avatar:</span>
-				<input type="url" name="avatar" class="form-control" />
+				<input type="url" name="avatar" placeholder="e.g. http://example.com/avatar.jpg" class="form-control" />
 			</label>
 
-			<label>
+			<label class="clearfix">
 				<span>Name:</span>
-				<input type="text" name="name" class="form-control" />
+				<input type="text" name="name" placeholder="e.g. John Doe" class="form-control" />
 			</label>
 
-			<label>
+			<label class="clearfix">
 				<span>Country:</span>
 				<select name="country" class="form-control">
 					<option value="AF">Afghanistan</option>
@@ -305,18 +304,24 @@
 				</select>
 			</label>
 
-			<label>
+			<label class="clearfix">
 				<span>Bio:</span>
-				<textarea name="bio" class="form-control"></textarea>
+				<textarea name="bio" placeholder="e.g. bio" class="form-control"></textarea>
+			</label>
+
+			<label class="clearfix">
+				<span>&nbsp;</span>
+				<input type="button" class="form-control form-submit">
 			</label>
 		</form>
 	</div>
+</main>
 
-	<div class="footer">
-		<div class="credits">&copy; Copyright &mdash; Frank / Yorman</div>
-	</div>
-</div>
+<footer>
+	<div class="credits">&copy; Copyright &mdash; Frank / Yorman</div>
+</footer>
 
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="midterm.js"></script>
 </body>
 </html>

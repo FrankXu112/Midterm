@@ -1,6 +1,8 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
+    margin: 0;
+    padding: 0;
 }
 .clearfix::before,
 .clearfix::after {
@@ -18,33 +20,51 @@ body {
 }
 .container {
     margin: 0 auto;
-    width: 1200px;
+    width: 700px;
 }
-.header {
-    border: 1px solid #f00;
+header {
+    background: url('social.jpg') repeat;
+    border-bottom: 1px solid #333;
+    padding: 100px 0;
 }
-.navbar {
+main {
+    margin-top: 30px;
+}
+nav {
+    display: table;
+    margin: 0 auto;
+    padding: 0;
+}
+nav ul {
     margin: 0;
     padding: 0;
 }
-.navbar li {
+nav li {
     float: left;
 }
-.navbar a {
+nav a {
+    background: #333;
+    border-radius: 3px;
     border: 1px solid #333;
-    padding: 10px;
+    color: #fff;
+    padding: 10px 30px;
+    margin-right: 5px;
+    text-decoration: none;
 }
-.content {
+nav a:hover {
+    background: #000;
 }
-.footer {
-    margin-top: 20px;
+footer {
+    color: #fff;
+    margin-top: 30px;
+    background: #333;
+    padding: 70px 0;
 }
 .credits {
     text-align: center;
     font-size: 11px;
 }
 #signup {
-    width: 700px;
     margin: 0 auto;
     border: 1px solid #ddd;
     padding: 20px;
@@ -53,15 +73,31 @@ body {
 }
 #signup label {
     display: block;
+    margin-top: 5px;
 }
 #signup label > span {
-    width: 150px;
     display: inline-block;
+    float: left;
     font-weight: bold;
+    line-height: 41px;
     text-transform: uppercase;
+    width: 150px;
 }
 #signup .form-control {
-    width: 545px;
+    float: left;
+    margin: 0;
     padding: 10px;
     font-size: 14px;
+    width: 500px;
+    border-radius: 3px;
+    border: 1px solid #bbb;
+}
+#signup textarea.form-control {
+    min-height: 300px;
+}
+#signup .form-submit {
+    color: #000;
+    width: initial;
+    padding: 10px 40px;
+    background: #c0c0c0;
 }
