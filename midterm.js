@@ -6,12 +6,12 @@ App.prototype.getUsers = function () {
 	return JSON.parse(localStorage.getItem('users'));
 };
 
-App.prototype.userExists = function () {
+App.prototype.userExists = function (username) {
 	var exists = false;
 	var users = this.getUsers();
 
 	for (var i in users) {
-		if (users[i].name === 'admin') {
+		if (users[i].name === username) {
 			exists = true;
 			break;
 		}
@@ -21,32 +21,60 @@ App.prototype.userExists = function () {
 };
 
 App.prototype.initialize = function () {
-	var data = [
-		{
-			username: 'admin',
-			password: 'password',
-			email: 'admin@example.com',
-			avatar: 'mark.jpg',
-			name: 'Mark Elliot Zuckerberg',
-			country: 'United States',
-			bio: 'Mark Elliot Zuckerberg (/ˈzʌkərbɜːrɡ/; born May 14, 1984) is an American computer programmer and Internet entrepreneur. He is a co-founder of Facebook, and currently operates as its chairman and chief executive officer. His net worth is estimated to be US$71.5 billion as of September 2017, and he is ranked by Forbes as the fifth richest person in the world.',
-		},
-		{
-			username: 'yorman',
-			password: 'yorman',
-			email: 'yorman@example.com',
-			avatar: 'yorman.jpg',
-			name: 'Yorman',
-			country: 'Colombia',
-			bio: 'Robert "Rob" Pike (born 1956) is a Canadian programmer and author. He is best known for his work at Bell Labs, where he was a member of the Unix team and was involved in the creation of the Plan 9 from Bell Labs and Inferno operating systems, as well as the Limbo programming language. He also co-developed the Blit graphical terminal for Unix; before that he wrote the first window system for Unix in 1981. Pike is the sole inventor named in AT&Ts US patent 4,555,775 or "backing store patent" that is part of the X graphic system protocol and one of the first software patents.',
-		},
-	];
-
-	if (this.userExists('admin')) {
+	if (localStorage.getItem('initialized')) {
 		return;
 	}
 
-	localStorage.setItem('users', JSON.stringify(data));
+	$.get('https://randomuser.me/api/', {results: 30}, function (data) {
+		var users = [];
+
+		for (var key in data.results) {
+			if (data.results.hasOwnProperty(key)) {
+				users.push(data.results[key].login.username);
+
+				localStorage.setItem(
+					'user_' + data.results[key].login.username,
+					JSON.stringify({
+						username: data.results[key].login.username,
+						password: data.results[key].login.password,
+						email: data.results[key].email,
+						avatar: data.results[key].picture.medium,
+						name: data.results[key].name.first + ' ' + data.results[key].name.last,
+						country: data.results[key].nat,
+						bio: 'DOB: ' + data.results[key].dob +
+							'Phone: ' + data.results[key].phone +
+							'Address: ' + data.results[key].location.street +
+							'City: ' + data.results[key].location.city + ', ' +
+							data.results[key].location.state + ', ' +
+							data.results[key].location.postcode
+					})
+				);
+			}
+		}
+
+		localStorage.setItem('users', JSON.stringify(users));
+		localStorage.setItem('initialized', true);
+	});
+};
+
+App.prototype.createUser = function() {
+	var users = this.getUsers();
+
+	users.push({
+		username: $('#signup input[name=username]').val(),
+		password: $('#signup input[name=password]').val(),
+		email:    $('#signup input[name=email]').val(),
+		avatar:   $('#signup input[name=avatar]').val(),
+		name:     $('#signup input[name=name]').val(),
+		country:  $('#signup input[name=country]').val(),
+		bio:      $('#signup input[name=bio]').val(),
+	});
+
+	localStorage.setItem('users', JSON.stringify(users));
+
+	window.alert('User created successfully');
+
+	location.href = 'profile.html';
 };
 
 jQuery(document).ready(function ($) {
@@ -56,5 +84,22 @@ jQuery(document).ready(function ($) {
 
 	$('#signup .form-submit').on('click', function (ev) {
 		ev.preventDefault();
+
+		var canProceed = true;
+		var fields = $('form#signup').find('input');
+
+		for (var key in fields) {
+			if (fields.hasOwnProperty(key)) {
+				if ($(fields[key]).attr('required') !== undefined && $(fields[key]).val() === '') {
+					window.alert('This field is required: ' + $(fields[key]).attr('name'));
+					canProceed = false;
+					break
+				}
+			}
+		}
+
+		if (canProceed) {
+			app.createUser();
+		}
 	});
 });

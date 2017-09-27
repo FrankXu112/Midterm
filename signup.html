@@ -26,17 +26,17 @@
 		<form method="post" id="signup">
 			<label class="clearfix">
 				<span>Username:</span>
-				<input type="text" name="username" placeholder="e.g. admin" class="form-control" />
+				<input type="text" name="username" placeholder="e.g. admin" class="form-control" required />
 			</label>
 
 			<label class="clearfix">
 				<span>Password:</span>
-				<input type="password" name="password" placeholder="e.g. password" class="form-control" />
+				<input type="password" name="password" placeholder="e.g. password" class="form-control" required />
 			</label>
 
 			<label class="clearfix">
 				<span>Email:</span>
-				<input type="email" name="email" placeholder="e.g. noreply@example.com" class="form-control" />
+				<input type="email" name="email" placeholder="e.g. noreply@example.com" class="form-control" required />
 			</label>
 
 			<label class="clearfix">
@@ -46,7 +46,7 @@
 
 			<label class="clearfix">
 				<span>Name:</span>
-				<input type="text" name="name" placeholder="e.g. John Doe" class="form-control" />
+				<input type="text" name="name" placeholder="e.g. John Doe" class="form-control" required />
 			</label>
 
 			<label class="clearfix">
@@ -91,7 +91,7 @@
 					<option value="BI">Burundi</option>
 					<option value="KH">Cambodia</option>
 					<option value="CM">Cameroon</option>
-					<option value="CA">Canada</option>
+					<option value="CA" selected="selected">Canada</option>
 					<option value="CV">Cape Verde</option>
 					<option value="KY">Cayman Islands</option>
 					<option value="CF">Central African Republic</option>
@@ -311,7 +311,7 @@
 
 			<label class="clearfix">
 				<span>&nbsp;</span>
-				<input type="button" class="form-control form-submit">
+				<a href="#" class="form-control form-submit">Submit</a>
 			</label>
 		</form>
 	</div>
