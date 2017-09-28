@@ -72,23 +72,29 @@ App.prototype.initialize = function () {
 };
 
 App.prototype.createUser = function() {
-	var users = this.getUsers();
+	var users = JSON.parse(localStorage.getItem('users'));
+	var username = $('#signup input[name=username]').val();
 
-	users.push({
-		username: $('#signup input[name=username]').val(),
-		password: $('#signup input[name=password]').val(),
-		email:    $('#signup input[name=email]').val(),
-		avatar:   $('#signup input[name=avatar]').val(),
-		name:     $('#signup input[name=name]').val(),
-		country:  $('#signup input[name=country]').val(),
-		bio:      $('#signup input[name=bio]').val(),
-	});
+	users.push(username);
+
+	localStorage.setItem(
+		'user_' + username,
+		JSON.stringify({
+			username: username,
+			password: $('#signup input[name=password]').val(),
+			email:    $('#signup input[name=email]').val(),
+			avatar:   $('#signup input[name=avatar]').val(),
+			name:     $('#signup input[name=name]').val(),
+			country:  $('#signup select[name=country]').val(),
+			bio:      $('#signup textarea[name=bio]').val(),
+		})
+	);
 
 	localStorage.setItem('users', JSON.stringify(users));
 
 	window.alert('User created successfully');
 
-	location.href = 'profile.html';
+	location.href = 'profile.html#username=' + username;
 };
 
 jQuery(document).ready(function ($) {
