@@ -1,20 +1,20 @@
 # Midterm
 
-- [ ] home page
-- [ ] login / signup
-- [ ] table / user list
-- [ ] profile view
-- [ ] missing page
+- [x] home page
+- [x] login / signup
+- [x] table / user list
+- [x] profile view
+- [x] missing page
 
 ### Table Columns
 
-- [ ] users: username
-- [ ] users: password
-- [ ] users: email
-- [ ] users: avatar
-- [ ] users: name
-- [ ] users: country
-- [ ] users: bio
+- [x] users: username
+- [x] users: password
+- [x] users: email
+- [x] users: avatar
+- [x] users: name
+- [x] users: country
+- [x] users: bio
 
 ### Authors
 
