@@ -1,0 +1,26 @@
+table{
+	margin-left: 80px;
+	margin-top: 80px;
+	border: 1px solid grey;
+	width: 800px;
+	height: 400px;
+}
+
+th{
+	/*border: 1px solid orange;*/
+	height: 50px;  
+}
+
+td{
+	border: 1px solid blue; 
+	text-align: center;
+	height: 100px;
+	width: 100px;
+}
+
+img{
+	height: 100%;
+	width: 100%;
+	display: block;
+	align-self: center;
+}
