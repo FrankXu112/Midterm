@@ -1,9 +1,23 @@
+/* author Yorman */
 /* global jQuery */
 
 var App = function () {};
 
 App.prototype.getUsers = function () {
-	return JSON.parse(localStorage.getItem('users'));
+	var users = [];
+	var uniques = JSON.parse(localStorage.getItem('users'));
+
+	for (var key in uniques) {
+		if (uniques.hasOwnProperty(key)) {
+			users.push(JSON.parse(localStorage.getItem('user_' + uniques[key])));
+		}
+	}
+
+	return users;
+};
+
+App.prototype.getUserData = function (username) {
+	return JSON.parse(localStorage.getItem('user_' + username));
 };
 
 App.prototype.userExists = function (username) {
@@ -38,12 +52,12 @@ App.prototype.initialize = function () {
 						username: data.results[key].login.username,
 						password: data.results[key].login.password,
 						email: data.results[key].email,
-						avatar: data.results[key].picture.medium,
+						avatar: data.results[key].picture.large,
 						name: data.results[key].name.first + ' ' + data.results[key].name.last,
 						country: data.results[key].nat,
-						bio: 'DOB: ' + data.results[key].dob +
-							'Phone: ' + data.results[key].phone +
-							'Address: ' + data.results[key].location.street +
+						bio: 'DOB: ' + data.results[key].dob + '<br>' +
+							'Phone: ' + data.results[key].phone + '<br>' +
+							'Address: ' + data.results[key].location.street + '<br>' +
 							'City: ' + data.results[key].location.city + ', ' +
 							data.results[key].location.state + ', ' +
 							data.results[key].location.postcode
@@ -58,23 +72,29 @@ App.prototype.initialize = function () {
 };
 
 App.prototype.createUser = function() {
-	var users = this.getUsers();
+	var users = JSON.parse(localStorage.getItem('users'));
+	var username = $('#signup input[name=username]').val();
 
-	users.push({
-		username: $('#signup input[name=username]').val(),
-		password: $('#signup input[name=password]').val(),
-		email:    $('#signup input[name=email]').val(),
-		avatar:   $('#signup input[name=avatar]').val(),
-		name:     $('#signup input[name=name]').val(),
-		country:  $('#signup input[name=country]').val(),
-		bio:      $('#signup input[name=bio]').val(),
-	});
+	users.push(username);
+
+	localStorage.setItem(
+		'user_' + username,
+		JSON.stringify({
+			username: username,
+			password: $('#signup input[name=password]').val(),
+			email:    $('#signup input[name=email]').val(),
+			avatar:   $('#signup input[name=avatar]').val(),
+			name:     $('#signup input[name=name]').val(),
+			country:  $('#signup select[name=country]').val(),
+			bio:      $('#signup textarea[name=bio]').val(),
+		})
+	);
 
 	localStorage.setItem('users', JSON.stringify(users));
 
 	window.alert('User created successfully');
 
-	location.href = 'profile.html';
+	location.href = 'profile.html#username=' + username;
 };
 
 jQuery(document).ready(function ($) {
@@ -102,4 +122,65 @@ jQuery(document).ready(function ($) {
 			app.createUser();
 		}
 	});
+
+	$('#reset_userlist').on('click', function (ev) {
+		ev.preventDefault();
+
+		if (confirm('Are you sure that you want to delete the user list?')) {
+			var users = app.getUsers();
+
+			for (var key in users) {
+				if (users.hasOwnProperty(key)) {
+					localStorage.removeItem('user_' + users[key].username);
+				}
+			}
+
+			localStorage.removeItem('initialized');
+			localStorage.removeItem('users');
+
+			location.href = 'index.html';
+		}
+	});
+
+	if ($('table#userlist').length) {
+		var count = 0;
+		var users = app.getUsers();
+
+		for (var key in users) {
+			if (users.hasOwnProperty(key)) {
+				count++;
+				$('table#userlist tbody').append('<tr>' +
+				'<td>#' + count + '</td>' +
+				'<td><img src="' + users[key].avatar + '" alt="' + users[key].name + '"></td>' +
+				'<td><span class="username">' + users[key].name + '</span></td>' +
+				'<td><a href="mailto:' + users[key].email + '" class="email">' + users[key].email + '</a></td>' +
+				'<td><span class="country">' + users[key].country + '</span></td>' +
+				'<td><a href="profile.html#username=' + users[key].username + '">view</a></td>' +
+				'</tr>');
+			}
+		}
+	}
+
+	if ($('body.profile').length) {
+		var username = location.hash.replace('#username=', '');
+
+		if (username === '') {
+			location.href = 'userlist.html';
+		}
+
+		var user = app.getUserData(username);
+
+		if (user !== null) {
+			$('.avatar').html('<img src="' + user.avatar + '">')
+
+			$('.details').append('<ul>' +
+			'<li><label>Username:</label><span class="username">' + user.username + '</span></li>' +
+			'<li><label>Password:</label><span class="password">' + user.password + '</span></li>' +
+			'<li><label>Email:</label><span class="email">' + user.email + '</span></li>' +
+			'<li><label>Name:</label><span class="name">' + user.name + '</span></li>' +
+			'<li><label>Country:</label><span class="country">' + user.country + '</span></li>' +
+			'<li><br><span class="bio">' + user.bio + '</span></li>' +
+			'</ul>');
+		}
+	}
 });

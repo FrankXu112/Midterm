@@ -1,12 +1,12 @@
 <html>
-<!-- Yorman -->
+<!-- Frank -->
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
 	<link rel="stylesheet" href="midterm.css">
 </head>
 
-<body class="profile">
+<body class="userlist">
 	<header>
 		<div class="container">
 			<nav>
@@ -22,14 +22,31 @@
 	</header>
 
 	<main>
-		<div class="container clearfix">
-			<div class="pull-left avatar">
-				<!-- popullated via javascript -->
-			</div>
+		<div class="container">
+			<table id="userlist">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>&nbsp;</th>
+						<th>FIRST/LAST NAME</th>
+						<th>E-MAIL</th>
+						<th>COUNTRY</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
 
-			<div class="pull-left details">
-				<!-- popullated via javascript -->
-			</div>
+				<tbody>
+					<!-- popullated using javascript -->
+				</tbody>
+
+				<tfoot>
+					<tr>
+						<td colspan="6">
+							<button id="reset_userlist">Reset User List</button>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
 		</div>
 	</main>
 
