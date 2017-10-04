@@ -1,22 +1,39 @@
+/*frank*/
+
 
 table{
 	margin-left: 80px;
 	margin-top: 80px;
-	border: 1px solid grey;
 	width: 800px;
 	height: 400px;
+	border-collapse: collapse;
+	background-color: orange;
 }
 
 th{
-	/*border: 1px solid orange;*/
-	height: 50px;  
+	border: 2px solid #786D5F;
+	height: 50px; 
+	color: white; 
+	background-color: #82CAFA;
+}
+
+.first_table{
+	width: 40px;
+
+}
+
+.second_table{
+	width: 80px;
 }
 
 td{
-	border: 1px solid blue; 
+	border: 2px solid #786D5F; 
 	text-align: center;
-	height: 100px;
-	width: 100px;
+	height: 80px;
+	width: auto;
+	font-family: sans-serif;
+	color: black;
+
 }
 
 img{
@@ -25,6 +42,8 @@ img{
 	display: block;
 	align-self: center;
 }
+
+/*frank*/
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -129,4 +148,4 @@ footer {
     padding: 10px 40px;
     background: #c0c0c0;
 }
->>>>>>> c7f0f6b46f9686f0ab8e538f86b912f2861eebb2
+
