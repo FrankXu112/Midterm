@@ -28,7 +28,7 @@ th {
     background-color: #82cafa;
 }
 #userlist tr:nth-child(even) {
-    background: orange;
+    background: #333;
 }
 .first_table {
     width: 40px;
