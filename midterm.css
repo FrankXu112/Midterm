@@ -55,20 +55,25 @@ td {
     margin-bottom: 0;
     border: 1px solid #8ce7e8;
     border-radius: 3px;
+    box-shadow: 4px 5px 10px 4px #888888;
 }
-.main_background:first-child {
+
+/*.main_background:first-child {
     margin-left: 0;
 }
 .main_background:last-child {
     margin-right: 0;
-}
+}*/
 .main_page {
-    width: 240px;
+    width: 280px;
     height: 200px;
     display: block;
     border: 1px solid #666;
     border-radius: 3px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
 }
+
 .home .button {
     border-radius: 4px;
     font-family: Arial;
@@ -141,6 +146,8 @@ header {
     padding: 100px 0;
     display: block;
     position: relative;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
 }
 
 header::before{
@@ -191,6 +198,7 @@ footer {
     padding: 70px 0;
 }
 .credits {
+    bottom: 0;
     text-align: center;
     font-size: 11px;
 }
@@ -225,12 +233,22 @@ footer {
 #signup textarea.form-control {
     min-height: 300px;
 }
+
+#country.form-control {
+    height: 39px;
+}
+
 #signup .form-submit {
     color: #000;
     width: initial;
     padding: 10px 40px;
     background: #c0c0c0;
+    text-decoration: none;
+    float: right;
+    margin-right: 8px;
+    margin-top: 10px;
 }
+
 body.userlist main .container {
     width: 100%;
 }
