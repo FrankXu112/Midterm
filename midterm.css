@@ -5,6 +5,15 @@ body {
     margin: 0;
     padding: 0;
 }
+
+#web_name{
+    margin-bottom: 20px;
+    margin-top: 0;
+    color: #2C3539;
+    font-size: 35px;
+    text-align: center;
+}
+
 table {
     margin-left: 80px;
     margin-top: 80px;
@@ -95,13 +104,13 @@ td {
     font-size: 16px;
     margin-top: 20px;
 }
-.home ul {
+ .news_list {
     list-style: none;
     margin-left: 0;
     padding-left: 1em;
     font-family: sans-serif;
 }
-.home ul > li::before {
+.news_list > li::before {
     display: inline-block;
     content: "-";
     width: 1em;
@@ -127,10 +136,25 @@ td {
     width: 700px;
 }
 header {
-    background: url('social.jpg') repeat;
+   /* background: url('social.jpg') repeat;*/
     border-bottom: 1px solid #333;
     padding: 100px 0;
+    display: block;
+    position: relative;
 }
+
+header::before{
+    content: "";
+    background: url('social.jpg') ;
+    opacity: 0.4;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; 
+}
+
 main {
     margin-top: 30px;
 }
@@ -144,8 +168,10 @@ nav ul {
     padding: 0;
 }
 nav li {
+    list-style: none;
     float: left;
 }
+
 nav a {
     background: #333;
     border-radius: 3px;
