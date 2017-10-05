@@ -48,13 +48,14 @@ td {
     margin-bottom: 20px;
 }
 .main_background {
-    background-color: #9afeff;
+    background-color: #333;
     display: inline-block;
     padding: 20px;
     margin: 20px;
-    margin-bottom: 0;
-    border: 1px solid #8ce7e8;
+    margin-bottom: 40px;
+    border: 1px solid #333;
     border-radius: 3px;
+    color: white;
     box-shadow: 4px 5px 10px 4px #888888;
 }
 
@@ -86,7 +87,7 @@ td {
     box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #ffb9f6;
 }
 .home .button:hover {
-    color: green;
+    color: #333;
 }
 .container2 {
     margin: 0 auto;
@@ -94,7 +95,7 @@ td {
 }
 .home h1 {
     color: #e77471;
-    font-size: 35px;
+    font-size: 40px;
     text-align: center;
 }
 .title {
@@ -121,25 +122,8 @@ td {
     width: 1em;
     margin-left: -1em;
 }
-/* frank */
-.clearfix::before,
-.clearfix::after {
-    content: " ";
-    display: table;
-}
-.clearfix::after {
-    clear: both;
-}
-.pull-left {
-    float: left;
-}
-.pull-right {
-    float: right;
-}
-.container {
-    margin: 0 auto;
-    width: 700px;
-}
+
+
 header {
    /* background: url('social.jpg') repeat;*/
     border-bottom: 1px solid #333;
@@ -160,6 +144,64 @@ header::before{
     right: 0;
     position: absolute;
     z-index: -1; 
+}
+
+.media_link{
+    float: left;
+    padding-top: 40px;
+    margin-bottom: 0;
+    width: 33%;
+}
+
+.social_link{
+    text-decoration: none;
+    color: white;
+    
+}
+
+.contact_link{
+    padding-top: 40px;
+    float: right;
+    margin-right: 30px;
+}
+
+.contact_link span{
+    display: inline-block;
+    line-height: 42px;
+}
+
+.contact_link i, .contact_link span{
+    float: left;
+}
+
+
+.credits {
+    float: left;
+    text-align: center;
+    font-size: 11px;
+    position: relative;
+    width: 20%;
+    margin-top: 140px;
+
+}
+/* frank */
+.clearfix::before,
+.clearfix::after {
+    content: " ";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+.container {
+    margin: 0 auto;
+    width: 700px;
 }
 
 main {
@@ -195,13 +237,9 @@ footer {
     color: #fff;
     margin-top: 30px;
     background: #333;
-    padding: 70px 0;
+    padding: 30px 0;
 }
-.credits {
-    bottom: 0;
-    text-align: center;
-    font-size: 11px;
-}
+
 #signup {
     margin: 0 auto;
     border: 1px solid #ddd;
