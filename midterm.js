@@ -165,7 +165,8 @@ jQuery(document).ready(function ($) {
 		var username = location.hash.replace('#username=', '');
 
 		if (username === '') {
-			location.href = 'userlist.html';
+			var uniques = JSON.parse(localStorage.getItem('users'));
+			username = uniques[0];
 		}
 
 		var user = app.getUserData(username);
